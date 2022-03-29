@@ -82,21 +82,18 @@ namespace RestApi.Controllers
           
             foreach (var item in lista)
             {
-                using (var context = new PersonaContext())
+                using (var db = new PersonaContext())
                 {
-                    using (var db = new PersonaContext())
-                    {
-                        var person = new Persona {
-                            id = item.Id,
-                            name = item.Name,
-                            image = item.Image,
-                            status = item.Status,
-                            species = item.Species,
-                            cantApariciones = item.episode.Count
-                        };
-                        db.Persona.Add(person);
-                        db.SaveChanges();
-                    }
+                    var person = new Persona {
+                        id = item.Id,
+                        name = item.Name,
+                        image = item.Image,
+                        status = item.Status,
+                        species = item.Species,
+                        cantApariciones = item.episode.Count
+                    };
+                    db.Persona.Add(person);
+                    db.SaveChanges();
                 }
 
 
